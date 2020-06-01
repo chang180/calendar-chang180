@@ -13,6 +13,7 @@
             text-align: center;
             background: lightgoldenrodyellow;
             height: 100%;
+            min-width:900px;
         }
 
         .calendar td:first-child {
@@ -40,7 +41,7 @@
     date_default_timezone_set("Asia/Taipei");
 
     // 加入2020年節慶資料庫，須先在MySQL建立holiday資料庫並匯入./Db/holiday.sql
-    $dsn = "mysql:host=localhost;dbname=holiday;charset=utf8";
+    $dsn = "mysql:host=localhost;dbname=holiday;charset=utf8;";
     $pdo = new PDO($dsn, 'root', '');
     $sql = "SELECT * FROM 2020_holiday";
     $rows = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -102,7 +103,7 @@
         <tr>
             <td>
                 <table class="month h5 table text-light">
-                    <tr class="btn btn-group">
+                    <tr class="btn btn-group col-fill">
                         <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of January', ($thisDay[0])); ?>">1月</a></td>
                         <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of February', ($thisDay[0])); ?>">2月</a></td>
                         <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of March', ($thisDay[0])); ?>">3月</a></td>
